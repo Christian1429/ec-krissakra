@@ -29,7 +29,7 @@ export default function Dashboard() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle>Total Försäljning</CardTitle>
-            <ShoppingBag className="h-4 w-4 text-green-500" />
+            <ShoppingBag className="h-4 w-4 text-purple-500" />
           </CardHeader>
           <CardContent>
             <p className="text-2xl font-bold">+50</p>
@@ -80,9 +80,40 @@ export default function Dashboard() {
                 <AvatarFallback>KS</AvatarFallback>
               </Avatar>
               <div className="grid gap-1">
-                <p className='text-sm font-medium'>Jan Lindstörm</p>
-                <p>Test@email.com</p>
+                <p className="text-sm font-medium">Jan Lindstörm</p>
+                <p className="text-sm text-muted-foreground">Test@email.com</p>
               </div>
+              <p className="ml-auto font-medium">+1,500.00 sek</p>
+            </div>
+            <div className="flex items-center gap-4">
+              <Avatar className="hidden sm:flex h-9 w-9">
+                <AvatarFallback>KS</AvatarFallback>
+              </Avatar>
+              <div className="grid gap-1">
+                <p className="text-sm font-medium">Jan Lindstörm</p>
+                <p className="text-sm text-muted-foreground">Test@email.com</p>
+              </div>
+              <p className="ml-auto font-medium">+1,500.00 sek</p>
+            </div>
+            <div className="flex items-center gap-4">
+              <Avatar className="hidden sm:flex h-9 w-9">
+                <AvatarFallback>KS</AvatarFallback>
+              </Avatar>
+              <div className="grid gap-1">
+                <p className="text-sm font-medium">Jan Lindstörm</p>
+                <p className="text-sm text-muted-foreground">Test@email.com</p>
+              </div>
+              <p className="ml-auto font-medium">+1,500.00 sek</p>
+            </div>
+            <div className="flex items-center gap-4">
+              <Avatar className="hidden sm:flex h-9 w-9">
+                <AvatarFallback>KS</AvatarFallback>
+              </Avatar>
+              <div className="grid gap-1">
+                <p className="text-sm font-medium">Jan Lindstörm</p>
+                <p className="text-sm text-muted-foreground">Test@email.com</p>
+              </div>
+              <p className="ml-auto font-medium">+1,500.00 sek</p>
             </div>
           </CardContent>
         </Card>
