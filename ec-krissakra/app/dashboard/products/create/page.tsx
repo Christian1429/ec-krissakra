@@ -1,3 +1,6 @@
+"use client";
+import { UploadDropzone } from '@/app/lib/uploadthing'; // or ''; but there is a bug, check later
+// import { UploadButton } from '@uploadthing/react';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -5,8 +8,9 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from '@/components/ui/card';
-import { ChevronLeft } from 'lucide-react';
+import { Car, ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -19,7 +23,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { UploadDropzone } from '@/app/lib/uploadthing' // or '@uploadthing/react'; but there is a bug, check later
+
 
 
 export default function ProductCreateRoute() {
@@ -79,10 +83,21 @@ export default function ProductCreateRoute() {
             </div>
             <div className="flex flex-col gap-3">
               <Label>Bilder</Label>
-              <UploadDropzone endpoint="imageUploader"/>
+            <UploadDropzone 
+              endpoint="imageUploader"
+              onClientUploadComplete={(res) => {
+                alert("Uppladdningen klar");
+              }}
+              onUploadError={() => {
+                alert("Uppladdningen misslyckades");
+              }}
+              />
             </div>
           </div>
         </CardContent>
+        <CardFooter>
+              <Button>Skapa Produkt</Button>
+        </CardFooter>
       </Card>
     </form>
   );

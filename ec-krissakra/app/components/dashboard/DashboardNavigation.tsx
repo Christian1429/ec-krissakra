@@ -4,10 +4,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const links = [
-  { name: 'Dashboard', href: '/dashboard' },
+  { name: 'Kontrollpanel', href: '/dashboard' },
   { name: 'Orders', href: '/dashboard/orders' },
-  { name: 'Products', href: '/dashboard/products' },
-  { name: 'Categories', href: '/dashboard/categories' },
+  { name: 'Produkter', href: '/dashboard/products' },
+  { name: 'Kategorier', href: '/dashboard/categories' },
 ];
 
 export default function DashboardNavigation() {
