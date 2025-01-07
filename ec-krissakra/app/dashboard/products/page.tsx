@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import Link from "next/link";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+
 export default function ProductsRoute() {
 
     return (
@@ -18,7 +19,7 @@ export default function ProductsRoute() {
         </div>
         <Card className="mt-5">
           <CardHeader>
-            <CardTitle>Produkter</CardTitle>
+            <CardTitle>Produkt</CardTitle>
             <CardDescription>
               Hantera dina produkter och kolla försäljnings detaljer
             </CardDescription>
