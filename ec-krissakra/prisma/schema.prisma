@@ -23,7 +23,7 @@ model Product {
   description  String
   status       ProductStatus
   price        Int
-  image        String[]
+  images       String[]
   category     Category
   isFeatured   Boolean  @default(false)
 
@@ -37,7 +37,15 @@ enum ProductStatus {
 }
 
 enum Category {
-  Skydd
-  Vattenrening
-  Övrigt
+  protection
+  waterfilter
+  any
+}
+
+model Banner {
+  id          String @id @default(uuid())
+  title       String
+  imageString String
+
+  createdAt DateTime @default(now())
 }
