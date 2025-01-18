@@ -22,8 +22,8 @@ export default async function DashboardLayout({ children }: { children: React.Re
     const { getUser} = getKindeServerSession();
     const user = await getUser();
 
-    if (!user || user.email !== "krissakra@hotmail.com") {
-        return redirect("/");
+    if (!user || user.email !== 'explosivfibres@hotmail.com') {
+      return redirect('/');
     }
 
   return (

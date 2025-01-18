@@ -51,12 +51,20 @@ const data = await getData();
                 {data.map((item) => (
                   <TableRow key={item.id}>
                     <TableCell>
-                      <Image alt="produkt bild" src={item.images[0]} width={64} height={64} className="rounded-md object-cover h-16 w-16" />
+                      <Image
+                        alt="produkt bild"
+                        src={item.images[0]}
+                        width={64}
+                        height={64}
+                        className="rounded-md object-cover h-16 w-16"
+                      />
                     </TableCell>
                     <TableCell>{item.name}</TableCell>
                     <TableCell>{item.status}</TableCell>
                     <TableCell>{item.price}</TableCell>
-                    <TableCell>{new Intl.DateTimeFormat('sv-SE').format(item.createdAt)}</TableCell>
+                    <TableCell>
+                      {new Intl.DateTimeFormat('sv-SE').format(item.createdAt)}
+                    </TableCell>
                     <TableCell className="text-end">
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
@@ -67,8 +75,14 @@ const data = await getData();
                         <DropdownMenuContent align="end">
                           <DropdownMenuLabel>Hantera</DropdownMenuLabel>
                           <DropdownMenuSeparator />
-                          <DropdownMenuItem asChild><Link href={`/dashboard/products/${item.id}`}>Redigera</Link></DropdownMenuItem>
-                          <DropdownMenuItem>Ta bort</DropdownMenuItem>
+                          <DropdownMenuItem asChild>
+                            <Link href={`/dashboard/products/${item.id}`}>
+                              Redigera
+                            </Link>
+                          </DropdownMenuItem>
+                          <DropdownMenuItem asChild>
+                            <Link href={`/dashboard/products/${item.id}/delete`}>Ta bort</Link>
+                          </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
                     </TableCell>
@@ -79,5 +93,5 @@ const data = await getData();
           </CardContent>
         </Card>
       </>
-    )
+    );
 };

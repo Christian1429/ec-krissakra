@@ -7,7 +7,9 @@ const links = [
   { name: 'Kontrollpanel', href: '/dashboard' },
   { name: 'Orders', href: '/dashboard/orders' },
   { name: 'Produkter', href: '/dashboard/products' },
-  { name: 'Kategorier', href: '/dashboard/categories' },
+  { name: 'Banner bilder', href: '/dashboard/banner' },
+  
+  // { name: 'Kategorier', href: '/dashboard/categories' },
 ];
 
 export default function DashboardNavigation() {

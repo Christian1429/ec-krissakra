@@ -27,7 +27,7 @@ import { SubmitButton } from '../SubmitButtons';
 import { categories } from '@/app/lib/categories';
 import { useActionState, useState } from 'react';
 import { useForm } from '@conform-to/react';
-import { createProduct } from '@/app/actions';
+import { editProduct } from '@/app/actions';
 import { parseWithZod } from '@conform-to/zod';
 import { productSchema } from '@/app/lib/zodSchemas';
 import Image from 'next/image';
@@ -48,12 +48,11 @@ interface iAppProps {
 
 export function EditForm({data}: iAppProps) {
   const [images, setImages] = useState<string[]>(data.images);
-  const [lastResult, action] = useActionState(createProduct, undefined);
+  const [lastResult, action] = useActionState(editProduct, undefined);
   const [form, fields] = useForm({
     lastResult,
 
     onValidate({ formData }) {
-      console.log(formData);
       return parseWithZod(formData, { schema: productSchema });
     },
 
@@ -67,19 +66,20 @@ export function EditForm({data}: iAppProps) {
 
   return (
     <form id={form.id} onSubmit={form.onSubmit} action={action}>
+      <input type={'hidden'} name="productId" value={data.id}/>
       <div className="flex items-center gap-4">
         <Button variant="outline" size="icon" asChild>
           <Link href="/dashboard/products">
             <ChevronLeft className="w-4 h-4" />
           </Link>
         </Button>
-        <h1 className="text-xl font-semibold tracking-tight">New Product</h1>
+        <h1 className="text-xl font-semibold tracking-tight">Ändra produkt</h1>
       </div>
 
       <Card className="mt-5">
         <CardHeader>
           <CardTitle>Produkt Detaljer</CardTitle>
-          <CardDescription>Här skapar du produkten</CardDescription>
+          <CardDescription>Här kan du uppdatera en produkt</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col gap-6">
@@ -124,7 +124,7 @@ export function EditForm({data}: iAppProps) {
               <Switch
                 key={fields.isFeatured.key}
                 name={fields.isFeatured.name}
-                checked={data.isFeatured}
+                defaultChecked={data.isFeatured}
               />
               <p className="text-red-500">{fields.isFeatured.errors}</p>
             </div>
@@ -217,7 +217,7 @@ export function EditForm({data}: iAppProps) {
           </div>
         </CardContent>
         <CardFooter>
-          <SubmitButton text="Create Product" />
+          <SubmitButton text="Ändra produkt" />
         </CardFooter>
       </Card>
     </form>

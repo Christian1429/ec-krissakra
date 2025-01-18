@@ -16,7 +16,8 @@ export const ourFileRouter = {
       const { getUser } = getKindeServerSession();
       const user = await getUser();
 
-      if (!user || user.email !== 'krissakra@hotmail.com') throw new UploadThingError('Unauthorized');
+      if (!user || user.email !== 'explosivfibres@hotmail.com')
+        throw new UploadThingError('Unauthorized');
 
       return { userId: user.id };
     })

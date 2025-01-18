@@ -11,12 +11,11 @@ import prisma from './lib/db';
 // import Stripe from 'stripe';
 import { revalidatePath } from 'next/cache';
 
-
 export async function createProduct(prevState: unknown, formData: FormData) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
-  if (!user || user.email !== 'krissakra@hotmail.com') {
+  if (!user || user.email !== 'explosivfibres@hotmail.com') {
     return redirect('/');
   }
 
@@ -51,7 +50,7 @@ export async function editProduct(prevState: any, formData: FormData) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
-  if (!user || user.email !== 'krissakra@hotmail.com') {
+  if (!user || user.email !== 'explosivfibres@hotmail.com') {
     return redirect('/');
   }
 
@@ -90,7 +89,7 @@ export async function deleteProduct(formData: FormData) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
-  if (!user || user.email !== 'krissakra@hotmail.com') {
+  if (!user || user.email !== 'explosivfibres@hotmail.com') {
     return redirect('/');
   }
 
@@ -107,7 +106,7 @@ export async function createBanner(prevState: any, formData: FormData) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
-  if (!user || user.email !== 'krissakra@hotmail.com') {
+  if (!user || user.email !== 'explosivfibres@hotmail.com') {
     return redirect('/');
   }
 
