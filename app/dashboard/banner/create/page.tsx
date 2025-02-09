@@ -9,13 +9,14 @@ import { useForm } from "@conform-to/react";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { useActionState, useState } from 'react';
-import { createProduct } from "@/app/actions";
+import { createBanner} from "@/app/actions";
 import { bannerSchema } from "@/app/lib/zodSchemas";
 import { parseWithZod } from "@conform-to/zod";
+import Image from "next/image";
 
 export default function BannerRoute() {
-      const [images, setImages] = useState<string[]>([]);
-      const [lastResult, action] = useActionState(createProduct, undefined);
+      const [image, setImages] = useState<string | undefined> (undefined);
+      const [lastResult, action] = useActionState(createBanner, undefined);
       const [form, fields] = useForm({
         lastResult,
     
@@ -56,7 +57,26 @@ export default function BannerRoute() {
               </div>
               <div className="flex flex-col gap-3">
                 <Label>Bilder</Label>
-                <UploadDropzone endpoint="bannerImageRoute" />
+                <input type="hidden" value={image} key={fields.imageString.key} name={fields.imageString.name} defaultValue={fields.imageString.initialValue} />
+                {image !== undefined ? (
+                  <Image src={image}
+                  alt="Product Image"
+                  width={200}
+                  height={200} 
+                  className="w-[200px] h-[200px] object-cover border rounded-lg"
+                  />
+                ): (
+                <UploadDropzone onClientUploadComplete={(res) => {
+                  setImages(res[0].url);
+                }}
+                onUploadError={() => {
+                  alert("Uppladdningen misslyckades");
+                }}
+                endpoint="bannerImageRoute"
+                />
+                )}
+
+                <p className="text-red-500">{fields.imageString.errors}</p>
               </div>
             </div>
           </CardContent>
