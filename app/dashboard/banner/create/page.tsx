@@ -75,7 +75,6 @@ export default function BannerRoute() {
                 endpoint="bannerImageRoute"
                 />
                 )}
-
                 <p className="text-red-500">{fields.imageString.errors}</p>
               </div>
             </div>

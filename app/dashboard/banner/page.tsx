@@ -64,7 +64,7 @@ export default async function BannerRoute() {
                           <DropdownMenuLabel>Hantera</DropdownMenuLabel>
                           <DropdownMenuSeparator />
                           <DropdownMenuItem asChild>
-                            <Link href={``}>Ta bort</Link>
+                            <Link href={`/dashboard/banner/${item.id}/delete`}>Ta bort</Link>
                           </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>

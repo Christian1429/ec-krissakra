@@ -132,7 +132,7 @@ export async function deleteBanner(formData: FormData) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
-  if (!user || user.email !== 'jan@alenix.de') {
+  if (!user || user.email !== 'explosivfibres@hotmail.com') {
     return redirect('/');
   }
 
