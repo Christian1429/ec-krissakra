@@ -17,12 +17,13 @@ import { redirect } from 'next/navigation';
 import {
   LogoutLink
 } from '@kinde-oss/kinde-auth-nextjs/components';
+const email = process.env.ALLOWED_EMAIL;
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
     const { getUser} = getKindeServerSession();
     const user = await getUser();
 
-    if (!user || user.email !== 'explosivfibres@hotmail.com') {
+    if (!user || user.email !== email) {
       return redirect('/');
     }
 

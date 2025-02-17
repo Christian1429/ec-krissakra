@@ -2,7 +2,9 @@ import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import { createUploadthing, type FileRouter } from 'uploadthing/next';
 import { UploadThingError } from 'uploadthing/server';
 
+
 const f = createUploadthing();
+const email = process.env.ALLOWED_EMAIL
 
 export const ourFileRouter = {
   imageUploader: f({
@@ -16,7 +18,7 @@ export const ourFileRouter = {
       const { getUser } = getKindeServerSession();
       const user = await getUser();
 
-      if (!user || user.email !== 'explosivfibres@hotmail.com')
+      if (!user || user.email !== email)
         throw new UploadThingError('Unauthorized');
 
       return { userId: user.id };
@@ -39,7 +41,7 @@ export const ourFileRouter = {
       const { getUser } = getKindeServerSession();
       const user = await getUser();
 
-      if (!user || user.email !== 'explosivfibres@hotmail.com')
+      if (!user || user.email !== email)
         throw new UploadThingError('Unauthorized');
 
       return { userId: user.id };

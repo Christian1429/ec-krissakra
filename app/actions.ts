@@ -5,17 +5,19 @@ import { redirect } from 'next/navigation';
 import { parseWithZod } from '@conform-to/zod';
 import { bannerSchema, productSchema } from './lib/zodSchemas';
 import prisma from './lib/db';
+
 // import { redis } from './lib/redis';
 // import { Cart } from './lib/interfaces';
 // import { stripe } from './lib/stripe';
 // import Stripe from 'stripe';
 import { revalidatePath } from 'next/cache';
+const email = process.env.ALLOWED_EMAIL;
 
 export async function createProduct(prevState: unknown, formData: FormData) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
-  if (!user || user.email !== 'explosivfibres@hotmail.com') {
+  if (!user || user.email !== email) {
     return redirect('/');
   }
 
@@ -50,7 +52,7 @@ export async function editProduct(prevState: any, formData: FormData) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
-  if (!user || user.email !== 'explosivfibres@hotmail.com') {
+  if (!user || user.email !== email) {
     return redirect('/');
   }
 
@@ -89,7 +91,7 @@ export async function deleteProduct(formData: FormData) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
-  if (!user || user.email !== 'explosivfibres@hotmail.com') {
+  if (!user || user.email !== email) {
     return redirect('/');
   }
 
@@ -106,7 +108,7 @@ export async function createBanner(prevState: any, formData: FormData) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
-  if (!user || user.email !== 'explosivfibres@hotmail.com') {
+  if (!user || user.email !== email) {
     return redirect('/');
   }
 
@@ -132,7 +134,7 @@ export async function deleteBanner(formData: FormData) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
 
-  if (!user || user.email !== 'explosivfibres@hotmail.com') {
+  if (!user || user.email !== email) {
     return redirect('/');
   }
 
